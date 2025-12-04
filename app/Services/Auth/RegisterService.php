@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterService {
     public function register(array $data): User {
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -14,6 +15,7 @@ class RegisterService {
         ]);
 
         Auth::login($user);
+
         return $user;
     }
 }
