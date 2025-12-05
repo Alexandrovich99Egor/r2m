@@ -24,9 +24,9 @@ function uploadAvatar() {
             });
 
             const result = await response;
-            console.log('Файл загружен:', result);
+            console.log(result);
         } catch (err) {
-            console.error('Ошибка загрузки:', err);
+            console.error(err);
         }
 
 

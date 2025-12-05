@@ -46,6 +46,9 @@
                         <p>
                             Коронован : {{auth()->user()->role}}
                         </p>
+                        <p>
+                            Био : {{auth()->user()->bio}}
+                        </p>
                     </div>
                 </div>
 
