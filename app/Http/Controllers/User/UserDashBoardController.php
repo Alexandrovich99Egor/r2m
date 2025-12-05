@@ -4,25 +4,13 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\UploadAvatar\UploadAvatarService;
+use Illuminate\View\View;
 
 class UserDashBoardController extends Controller
 {
     //
-
-    public function store(Request $request, UploadAvatarService $uploadAvatarService): \Illuminate\Http\JsonResponse
+    public function index():View
     {
-        $request->validate([
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
-
-
-        $path = $uploadAvatarService->uploadAvatar($request->file('avatar'));
-
-        return response()->json([
-            'message' => 'Avatar Uploaded Successfully',
-            'path' => $path,
-            'url' => asset('storage/' . $path),
-        ]);
+        return view('dashboard');
     }
 }

@@ -5,8 +5,8 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\UserDashBoardController;
-use App\Http\Middleware\EnsureUserIsLoggedIn;
-use App\Http\Middleware\isAttempUserLogin;
+
+use App\Http\Controllers\User\UserUploadAvatarController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,5 +24,7 @@ Route::post('/login', [LoginController::class, 'store'])->name('login.form');
 
 Route::get('/logout', [LogoutController::class, 'index'])->name('logout');
 
-Route::get('/dashboard', [UserDashBoardController::class,'index'])->name('dashboard');
+Route::get('/dashboard', [UserDashBoardController::class, 'index'])->name('dashboard');
+
+Route::post('/user-upload-avatar', [UserUploadAvatarController::class, 'store'])->name('upload-avatar');
 

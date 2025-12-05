@@ -2,14 +2,21 @@
 
 namespace App\Services\UploadAvatar;
 
-use App\Models\User;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
-
 class UploadAvatarService
 {
-    public function uploadAvatar($file): RedirectResponse
+    public function uploadAvatar($file)
     {
+
+        if (!$file->isValid()) return false;
+
+        $path = $file->store('avatars', 'public');
+
+        $user = auth()->user();
+        $user->avatar = $path;
+        $user->save();
+
+        return $path;
+
 
     }
 }

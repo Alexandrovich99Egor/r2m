@@ -23,6 +23,6 @@ class RegisterController extends Controller
         $registerService->register($request->validated());
 
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard')->with('success', 'You have been registered successfully.');
     }
 }

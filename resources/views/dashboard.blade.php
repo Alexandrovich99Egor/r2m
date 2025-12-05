@@ -4,42 +4,51 @@
     @section('title','r2m')
 
     @section('content')
+        <div class="container m-auto text-amber-50  w-full">
 
-        <div class="container flex flex-col items-center text-amber-50">
-            <div class="w-1/2 text-center">
-                <h1>Dashboard</h1>
-                <p>Welcome {{auth()->user()->name}}</p>
-                <div class="flex justify-center mt-8">
-                    @csrf
-                    <div class="rounded-lg shadow-xl bg-gray-50 lg:w-1/2">
-                        <div class="m-4">
-                            <label class="inline-block mb-2 text-gray-500">
-                                Upload Image </br>(jpg,png,svg,jpeg)</label>
-                            <div class="flex items-center justify-center w-full">
-                                <label
-                                    class="flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300">
-                                    <div class="flex flex-col items-center justify-center pt-7">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                             class="w-12 h-12 text-gray-400 group-hover:text-gray-600"
-                                             viewBox="0 0 20 20"
-                                             fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                  d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-                                                  clip-rule="evenodd"/>
-                                        </svg>
-                                        <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                                            Select a photo</p>
-                                    </div>
-                                    <input id="#user-avatar-upload" type="file" class="opacity-0"/>
+        </div>
+        <div class="container m-auto flex flex-col text-amber-50  w-full ">
+            <div class="w-full">
+                <h1 class="font-bold text-3xl mb-2 text-center">Dashboard</h1>
+                <div class="flex justify-between items-top p-8">
+                    <div class="flex flex-col">
+                        <div class="mb-10 flex flex-col items-center justify-between">
+                            <div
+                                class="w-30 h-30 rounded-full overflow-hidden border-2 bg-orange-100 mb-5 cursor-pointer relative">
+                                <label class="absolute left-0 right-0 block w-full h-full cursor-pointer"
+                                       for="user-avatar-upload">
+                                    <img src="{{ auth()->user()->avatar
+                                    ? asset('storage/' . auth()->user()->avatar)
+                                    : asset('storage/avatars/default.jpg') }}" alt="avatar">
                                 </label>
+                                <input type="file" id="user-avatar-upload" name="avatar" class="hidden" accept="image/*">
+                            </div>
+                            <div class="flex flex-col  justify-between">
+                                <h2>Здарова, формошлеп {{auth()->user()->name}}</h2>
                             </div>
                         </div>
-                        <div class="flex p-2 space-x-4">
-                            <button class="px-4 py-2 text-white bg-red-500 rounded shadow-xl">Cannel</button>
-                            <button class="px-4 py-2 text-white bg-green-500 rounded shadow-xl">Create</button>
+                        <div class=" mt-10">
+                            <button type="button"
+                                    class="w-full cursor-pointer text-white bg-gradient-to-br from-purple-600 to-blue-500
+                    hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300
+                     dark:focus:ring-blue-800 font-medium rounded-base text-sm px-4 py-2.5
+                      text-center leading-5">
+                                <a href="{{route('logout')}}">
+                                    Log out
+                                </a>
+                            </button>
                         </div>
                     </div>
+                    <div>
+                        <p>
+                            Про него : {{auth()->user()->about}}
+                        </p>
+                        <p>
+                            Коронован : {{auth()->user()->role}}
+                        </p>
+                    </div>
                 </div>
+
 
             </div>
         </div>

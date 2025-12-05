@@ -12,7 +12,10 @@ return new class extends Migration {
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('about')->nullable()->after('name');
+            Schema::table('users', function (Blueprint $table) {
+                //
+                $table->string('role')->default('Формошлеп')->nullable()->after('about');
+            });
         });
     }
 
