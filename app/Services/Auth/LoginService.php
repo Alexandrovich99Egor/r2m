@@ -11,6 +11,7 @@ class LoginService
     {
         $credentials = $request->validated();
 
+
         if (Auth::attempt($credentials)) {
 
             $request->session()->regenerate();
@@ -18,11 +19,6 @@ class LoginService
             return redirect()->intended('dashboard');
         }
 
-        return redirect()->route('login.show')
-            ->withErrors([
-                'email' => 'The provided credentials do not match our records.',
-            ])
-            ->withInput($request->only('email'));
-
+        return redirect()->route('login.show')->withInput()->withErrors(['email' => 'The provided credentials do not match our records.']);
     }
 }

@@ -18,10 +18,8 @@ class LoginController extends Controller
     }
 
 
-    public function store(LoginRequest $request, LoginService $loginService):RedirectResponse
+    public function store(LoginRequest $request, LoginService $loginService): RedirectResponse
     {
-        $loginService->store($request);
-
-        return redirect()->route('home');
+        return $loginService->store($request);
     }
 }
