@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Profiles;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+
 
 class ProfileSeeder extends Seeder
 {
@@ -13,11 +15,13 @@ class ProfileSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('profile')->insert([
-            'user_id' => '1',
-            'name' => 'John Doe',
-            'email' => 'john@example.com',
-            'password' => bcrypt('password'),
-        ]);
+        User::all()->each(function ($user) {
+            Profiles::create([
+                'user_id' => $user->id,
+                'bio' => fake()->paragraph(2),
+                'skills' => 'Laravel, Vue, Tailwind'
+            ]);
+        });
+
     }
 }

@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnsureUserIsLoggedIn
+class isAlreadyLogin
 {
     /**
      * Handle an incoming request.
@@ -16,9 +17,10 @@ class EnsureUserIsLoggedIn
     public function handle(Request $request, Closure $next): Response
     {
 
-        if (!auth()->check()) {
-            return redirect()->route('login.show');
-        }
+
+        if (auth()->check()) return redirect()->route('dashboard')
+            ->withErrors(['auth' => 'Братан, ты ж уже залогался, не занимайся хуйней.']);
+
 
         return $next($request);
     }
