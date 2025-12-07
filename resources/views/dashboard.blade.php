@@ -77,6 +77,25 @@
                             </p>
                         </div>
                     </div>
+                    <div
+                        class="mt-10 rounded-xl p-10 bg-[linear-gradient(127.09deg,_rgba(6,11,40,0.94)_19.41%,_rgba(10,14,35,0.49)_76.65%)]">
+                        <h3 class="text-2xl font-bold mb-5">
+                            Другие формошлепы
+                        </h3>
+                        @if($usersProfiles)
+                            <ul>
+                                @foreach($usersProfiles as $usersProfile)
+                                    {{$usersProfile->user_id}}
+                                    <li>
+                                        <a href="{{route('profile.single',$usersProfile->id)}}">
+                                            {{ $usersProfile->name }}
+                                        </a>
+
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
 
                 </div>
 

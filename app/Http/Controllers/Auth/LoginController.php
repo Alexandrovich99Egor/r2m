@@ -19,7 +19,6 @@ class LoginController extends Controller
         return view('login');
     }
 
-
     public function store(LoginRequest $request, LoginService $loginService): RedirectResponse
     {
         //Data Transfer Object pattern

@@ -8,8 +8,12 @@
         <div class="container mx-auto flex items-center justify-between p-2">
 
             @auth
-                <p>Welcome, authenticated user!</p>
-                <x-button route="login.show" text="Sign in"/>
+                <div class="flex gap-2">
+                    <p>Welcome, authenticated user!</p>
+                    <x-button route="dashboard" text="Dashboard"/>
+                    <x-button route="login.show" text="Logout"/>
+                </div>
+
             @endauth
 
             @guest
