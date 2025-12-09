@@ -7,13 +7,14 @@ use App\Http\Controllers\Dashboard\DashboadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Profiles\ProfilesController;
 use App\Http\Controllers\User\UserUploadAvatarController;
+use App\Http\Middleware\DashBoardMiddleware;
 use App\Http\Middleware\isAlreadyLogin;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', [DashboadController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboadController::class, 'index'])->name('dashboard')->middleware(DashBoardMiddleware::class);
 
 Route::get('/logout', [LogoutController::class, 'index'])->name('logout');
 

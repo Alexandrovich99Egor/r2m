@@ -83,16 +83,58 @@
                             Другие формошлепы
                         </h3>
                         @if($usersProfiles)
-                            <ul>
+
+                            <table class="w-full border-collapse table-layout-fixed text-xs">
+                                <thead>
+                                <tr class="text-white">
+                                    <th class="w-1/2 p-5 text-left">Имя</th>
+                                    <th class="w-fit    p-5 text-left">Мыло</th>
+                                    <th class="w-fit  p-5 text-left">Когда взяли</th>
+                                    <th class="w-1/2  p-5 text-left">Роль</th>
+                                </tr>
+                                </thead>
+                                <tbody>
                                 @foreach($usersProfiles as $usersProfile)
-                                    {{$usersProfile->user_id}}
-                                    <li class="pt-3 pb-3 border-b  border-opacity-50">
-                                        <a class="text-xs" href="{{route('profile.single',$usersProfile->id)}}">
-                                            {{ $usersProfile->name }}
-                                        </a>
-                                    </li>
+                                    <tr class="text-white transition-all duration-300 hover:bg-blue-950 cursor-pointer">
+                                        <td class="w-1/3 text-left">
+                                            <a class="flex items-center gap-4 p-5"
+                                               href="{{route('profile.single',$usersProfile->id)}}">
+                                                @if($usersProfile->avatar)
+                                                    <img src="{{asset('storage/'.$usersProfile->avatar)}}" alt="avatar"
+                                                         class="w-10 h-10 rounded-full">
+                                                @else
+                                                    <img src="{{asset('storage/avatars/default.jpg')}}" alt="avatar"
+                                                         class="w-10 h-10 rounded-full">
+
+                                                @endif
+                                                {{$usersProfile->name}}
+                                            </a>
+                                        </td>
+                                        <td class="w-1/3 text-left">
+                                            <a class="p-5" href="{{route('profile.single',$usersProfile->id)}}">
+                                                {{$usersProfile->email}}
+                                            </a>
+                                        </td>
+                                        <td class="w-1/3  text-left">
+                                            <a class="p-5" href="{{route('profile.single',$usersProfile->id)}}">
+                                                {{$usersProfile->created_at}}
+                                            </a>
+                                        </td>
+                                        <td class="w-1/3  text-left">
+                                            <a class="p-5" href="{{route('profile.single',$usersProfile->id)}}">
+                                                {{$usersProfile->skills}}
+                                            </a>
+                                        </td>
+                                        <td class="w-1/3  text-left">
+                                            <a class="p-5" href="{{route('profile.single',$usersProfile->id)}}">
+                                                {{$usersProfile->role}}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
                                 @endforeach
-                            </ul>
+                            </table>
+
                         @endif
                     </div>
 

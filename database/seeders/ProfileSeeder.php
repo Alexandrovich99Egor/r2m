@@ -15,13 +15,14 @@ class ProfileSeeder extends Seeder
     public function run(): void
     {
         //
-        User::all()->each(function ($user) {
-            Profiles::create([
+        User::with('profile')->get()->each(fn($user) => $user->profile()->create(
+            [
                 'user_id' => $user->id,
-                'bio' => fake()->paragraph(2),
-                'skills' => 'Laravel, Vue, Tailwind'
-            ]);
-        });
+                'bio' => fake()->sentence(),
+                'skills' => 'PHP, Laravel, Vue',
+                'user_link' => 'https://github.com/alex-kalanis'
+            ]
+        ));
 
     }
 }

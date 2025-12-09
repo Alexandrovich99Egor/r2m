@@ -8,9 +8,6 @@ class LoginRequestDTO
 
     public function __construct(public string $email, public string $password)
     {
-
-        $this->email = $email;
-        $this->password = $password;
     }
 
 

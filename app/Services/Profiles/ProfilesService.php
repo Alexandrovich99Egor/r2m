@@ -4,6 +4,7 @@ namespace App\Services\Profiles;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class ProfilesService
 {
@@ -23,7 +24,6 @@ class ProfilesService
 
         if (!$user) return '';
 
-
         if (!$user->profile) return 'Здесь пока что пусто...';
 
         return $user->profile->bio;
@@ -34,6 +34,7 @@ class ProfilesService
     {
         return User::all()->where('id', $user_id);
     }
+
 
 
 }

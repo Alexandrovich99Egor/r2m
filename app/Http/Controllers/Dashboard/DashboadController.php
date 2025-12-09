@@ -17,8 +17,7 @@ class DashboadController extends Controller
         $usersProfiles = ProfilesService::getAllProfiles();
 
 
-
-        return view('dashboard', compact('profileBio','usersProfiles'));
+        return view('dashboard', compact('profileBio', ['usersProfiles']));
     }
 
 
