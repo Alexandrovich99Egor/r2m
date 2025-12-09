@@ -86,11 +86,10 @@
                             <ul>
                                 @foreach($usersProfiles as $usersProfile)
                                     {{$usersProfile->user_id}}
-                                    <li>
-                                        <a href="{{route('profile.single',$usersProfile->id)}}">
+                                    <li class="pt-3 pb-3 border-b  border-opacity-50">
+                                        <a class="text-xs" href="{{route('profile.single',$usersProfile->id)}}">
                                             {{ $usersProfile->name }}
                                         </a>
-
                                     </li>
                                 @endforeach
                             </ul>
